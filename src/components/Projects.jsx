@@ -17,7 +17,7 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import unisyncImage from "@/assets/projectImages/unisyncImage.png";
-import freshPlusImage from "@/assets/projectImages/freshPlus.png";
+import freshPlusImage from "@/assets/projectImages/FreshPlus.png";
 import smartGasShutoffSystemImage from "@/assets/projectImages/SmartGassShutOffSystem.jpeg";
 import ChatWithPDF from "@/assets/projectImages/ChatWithPDF.png";
 
