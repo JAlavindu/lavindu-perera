@@ -69,10 +69,10 @@ function AboutMe() {
                 Hello! I'm <span className="text-primary">Lavindu Perera</span>
               </h3>
               <p className="text-base sm:text-lg text-muted-foreground leading-relaxed">
-                A passionate web developer with a knack for creating engaging
-                and user-friendly digital experiences. With a background in IT,
-                I specialize in building responsive and dynamic websites using
-                modern technologies.
+                A passionate Software Engineer with a knack for creating
+                engaging and user-friendly digital experiences. With a
+                background in IT, I specialize in building web apps, automation,
+                and Arduino projects.
               </p>
             </div>
 
@@ -85,12 +85,15 @@ function AboutMe() {
                 {[
                   "React",
                   "Tailwind CSS",
-                  "Vite",
                   "JavaScript",
                   "HTML/CSS",
                   "SpringBoot",
                   "PostgreSQL",
                   "Node.js",
+                  "Python",
+                  "Arduino",
+                  "Docker",
+                  "Selenium",
                 ].map((tech) => (
                   <span
                     key={tech}
