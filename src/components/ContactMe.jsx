@@ -328,20 +328,23 @@ function ContactMe() {
                 </svg>
               </Button>
             </DialogTrigger>
-            <DialogContent className="sm:max-w-[550px]">
-              <DialogHeader>
-                <DialogTitle className="text-2xl font-bold">
+            <DialogContent className="sm:max-w-[600px] max-h-[90vh] overflow-y-auto">
+              <DialogHeader className="space-y-3">
+                <DialogTitle className="text-2xl font-bold text-foreground">
                   Send Me a Message
                 </DialogTitle>
-                <DialogDescription>
+                <DialogDescription className="text-base text-muted-foreground">
                   Fill out the form below and I'll get back to you as soon as
                   possible.
                 </DialogDescription>
               </DialogHeader>
-              <form onSubmit={handleSubmit}>
-                <div className="grid gap-4 py-4">
-                  <div className="grid gap-2">
-                    <Label htmlFor="name" className="text-left">
+              <form onSubmit={handleSubmit} className="space-y-5">
+                <div className="space-y-4">
+                  <div className="space-y-2">
+                    <Label
+                      htmlFor="name"
+                      className="text-sm font-medium text-foreground"
+                    >
                       Name <span className="text-destructive">*</span>
                     </Label>
                     <Input
@@ -351,11 +354,14 @@ function ContactMe() {
                       value={formData.name}
                       onChange={handleChange}
                       required
-                      className="focus:ring-2 focus:ring-primary"
+                      className="h-11 focus-visible:ring-primary"
                     />
                   </div>
-                  <div className="grid gap-2">
-                    <Label htmlFor="email" className="text-left">
+                  <div className="space-y-2">
+                    <Label
+                      htmlFor="email"
+                      className="text-sm font-medium text-foreground"
+                    >
                       Email <span className="text-destructive">*</span>
                     </Label>
                     <Input
@@ -366,11 +372,14 @@ function ContactMe() {
                       value={formData.email}
                       onChange={handleChange}
                       required
-                      className="focus:ring-2 focus:ring-primary"
+                      className="h-11 focus-visible:ring-primary"
                     />
                   </div>
-                  <div className="grid gap-2">
-                    <Label htmlFor="subject" className="text-left">
+                  <div className="space-y-2">
+                    <Label
+                      htmlFor="subject"
+                      className="text-sm font-medium text-foreground"
+                    >
                       Subject <span className="text-destructive">*</span>
                     </Label>
                     <Input
@@ -380,11 +389,14 @@ function ContactMe() {
                       value={formData.subject}
                       onChange={handleChange}
                       required
-                      className="focus:ring-2 focus:ring-primary"
+                      className="h-11 focus-visible:ring-primary"
                     />
                   </div>
-                  <div className="grid gap-2">
-                    <Label htmlFor="message" className="text-left">
+                  <div className="space-y-2">
+                    <Label
+                      htmlFor="message"
+                      className="text-sm font-medium text-foreground"
+                    >
                       Message <span className="text-destructive">*</span>
                     </Label>
                     <Textarea
@@ -394,20 +406,25 @@ function ContactMe() {
                       value={formData.message}
                       onChange={handleChange}
                       required
-                      className="min-h-[120px] focus:ring-2 focus:ring-primary resize-none"
+                      className="min-h-[140px] focus-visible:ring-primary resize-none"
                     />
                   </div>
                 </div>
-                <DialogFooter className="gap-2 sm:gap-0">
+                <DialogFooter className="gap-3 sm:gap-2 pt-2">
                   <Button
                     type="button"
                     variant="outline"
                     onClick={() => setOpen(false)}
                     disabled={isLoading}
+                    className="w-full sm:w-auto"
                   >
                     Cancel
                   </Button>
-                  <Button type="submit" disabled={isLoading}>
+                  <Button
+                    type="submit"
+                    disabled={isLoading}
+                    className="w-full sm:w-auto"
+                  >
                     {isLoading ? (
                       <>
                         <svg
