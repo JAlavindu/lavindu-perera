@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { motion, useInView } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -17,6 +18,8 @@ import { toast } from "sonner";
 function ContactMe() {
   const [open, setOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const ref = React.useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -84,11 +87,17 @@ function ContactMe() {
   return (
     <section
       id="contact"
+      ref={ref}
       className="min-h-screen bg-background py-12 sm:py-20 px-4 sm:px-6 lg:px-8"
     >
       <div className="container mx-auto max-w-6xl">
         {/* Section Header */}
-        <div className="text-center mb-8 sm:mb-12 lg:mb-16">
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          className="text-center mb-8 sm:mb-12 lg:mb-16"
+        >
           <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-3 sm:mb-4">
             Get In Touch
           </h2>
@@ -96,10 +105,15 @@ function ContactMe() {
             Let's collaborate and create something amazing together
           </p>
           <div className="w-20 sm:w-24 h-1 bg-primary mx-auto rounded-full"></div>
-        </div>
+        </motion.div>
 
         {/* Contact Info Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 mb-8 sm:mb-12">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+          transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
+          className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 mb-8 sm:mb-12"
+        >
           {/* Email Card */}
           <div className="relative group overflow-hidden">
             {/* Glowing Border Effect - Behind the card */}
@@ -234,10 +248,17 @@ function ContactMe() {
               </p>
             </div>
           </div>
-        </div>
+        </motion.div>
 
         {/* Social Links */}
-        <div className="text-center mb-6 sm:mb-8">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={
+            isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }
+          }
+          transition={{ duration: 0.5, delay: 0.4, ease: "easeOut" }}
+          className="text-center mb-6 sm:mb-8"
+        >
           <h3 className="text-lg sm:text-xl font-semibold text-foreground mb-3 sm:mb-4">
             Connect With Me
           </h3>
@@ -285,10 +306,15 @@ function ContactMe() {
               </Button>
             </a>
           </div>
-        </div>
+        </motion.div>
 
         {/* CTA Buttons with Modal */}
-        <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center pt-2 sm:pt-4">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+          transition={{ duration: 0.5, delay: 0.5, ease: "easeOut" }}
+          className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center pt-2 sm:pt-4"
+        >
           <Button
             className="w-full sm:w-auto min-w-[200px] h-12 sm:h-10 text-base sm:text-sm touch-manipulation"
             size="lg"
@@ -477,7 +503,7 @@ function ContactMe() {
               </form>
             </DialogContent>
           </Dialog>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

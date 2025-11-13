@@ -1,4 +1,6 @@
 import React from "react";
+import { motion } from "framer-motion";
+import { useInView } from "framer-motion";
 import {
   Carousel,
   CarouselContent,
@@ -70,14 +72,23 @@ const projects = [
 ];
 
 function Projects() {
+  const ref = React.useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
+
   return (
     <section
       id="projects"
+      ref={ref}
       className="min-h-screen bg-background py-12 sm:py-20 px-4 sm:px-6 lg:px-8"
     >
       <div className="container mx-auto max-w-7xl">
         {/* Section Header */}
-        <div className="text-center mb-8 sm:mb-12 lg:mb-16">
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          className="text-center mb-8 sm:mb-12 lg:mb-16"
+        >
           <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-3 sm:mb-4">
             My Projects
           </h2>
@@ -85,10 +96,15 @@ function Projects() {
             A showcase of my recent work and creative solutions
           </p>
           <div className="w-20 sm:w-24 h-1 bg-primary mx-auto rounded-full"></div>
-        </div>
+        </motion.div>
 
         {/* Carousel Container */}
-        <div className="relative px-2 sm:px-4 lg:px-12">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.95 }}
+          transition={{ duration: 0.7, delay: 0.2, ease: "easeOut" }}
+          className="relative px-2 sm:px-4 lg:px-12"
+        >
           <Carousel
             opts={{
               align: "start",
@@ -170,7 +186,7 @@ function Projects() {
             <CarouselPrevious className="hidden md:flex -left-6 lg:-left-12 bg-card border-2 hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all w-10 h-10" />
             <CarouselNext className="hidden md:flex -right-6 lg:-right-12 bg-card border-2 hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all w-10 h-10" />
           </Carousel>
-        </div>
+        </motion.div>
 
         {/* Mobile Swipe Hint */}
         <div className="flex justify-center mt-6 sm:mt-8 gap-2 items-center">

@@ -2,6 +2,7 @@ import React from "react";
 import { Button } from "@/components/ui/button";
 import Typewriter from "./Typewriter";
 import ParticleAnimation from "./ParticleAnimation";
+import { motion } from "framer-motion";
 
 function Hero() {
   return (
@@ -12,10 +13,21 @@ function Hero() {
       {/* Content */}
       <div className="relative z-20 container mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
         <div className="max-w-4xl mx-auto text-center space-y-8 sm:space-y-10">
-          <Typewriter text="Turning 'What if' into 'What's next'" />
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+          >
+            <Typewriter text="Turning 'What if' into 'What's next'" />
+          </motion.div>
 
           {/* CTA Buttons - Enhanced mobile spacing */}
-          <div className="flex flex-col sm:flex-row gap-4 sm:gap-4 justify-center items-center pt-6 sm:pt-8">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
+            className="flex flex-col sm:flex-row gap-4 sm:gap-4 justify-center items-center pt-6 sm:pt-8"
+          >
             <Button
               size="lg"
               className="w-full sm:w-auto min-w-[200px] h-12 text-base sm:text-sm"
@@ -67,12 +79,17 @@ function Hero() {
                 />
               </svg>
             </Button>
-          </div>
+          </motion.div>
         </div>
       </div>
 
       {/* Enhanced Scroll Indicator */}
-      <div className="absolute bottom-8 sm:bottom-12 left-1/2 -translate-x-1/2 z-20 animate-bounce">
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1, delay: 0.6 }}
+        className="absolute bottom-8 sm:bottom-12 left-1/2 -translate-x-1/2 z-20 animate-bounce"
+      >
         <div
           className="w-6 h-10 border-2 border-white/50 rounded-full flex items-start justify-center p-2 cursor-pointer hover:border-white/80 transition-colors"
           onClick={() =>
@@ -83,7 +100,7 @@ function Hero() {
         >
           <div className="w-1 h-2 bg-white/50 rounded-full" />
         </div>
-      </div>
+      </motion.div>
 
       {/* Gradient Overlay for smooth transition */}
       <div className="absolute bottom-0 left-0 right-0 h-32 sm:h-40 bg-linear-to-t from-background to-transparent z-10 pointer-events-none"></div>

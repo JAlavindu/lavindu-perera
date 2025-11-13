@@ -3,8 +3,16 @@ import myImage from "@/assets/images/my-image3.png";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
 import ImageParticleBorder from "./ImageParticleBorder";
+import { motion, useInView } from "framer-motion";
 
 function AboutMe() {
+  const ref = React.useRef(null);
+  const isInView = useInView(ref, {
+    once: true,
+    amount: 0.2,
+    margin: "0px 0px -200px 0px",
+  });
+
   return (
     <section
       id="about"
@@ -13,19 +21,33 @@ function AboutMe() {
       {/* Top Gradient Overlay for smooth transition from Hero */}
       <div className="absolute top-0 left-0 right-0 h-32 sm:h-40 bg-linear-to-b from-black/80 to-transparent pointer-events-none"></div>
 
-      <div className="container mx-auto max-w-7xl relative z-10">
+      <div ref={ref} className="container mx-auto max-w-7xl relative z-10">
         {/* Section Header */}
-        <div className="text-center mb-8 sm:mb-12 lg:mb-16">
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          className="text-center mb-8 sm:mb-12 lg:mb-16"
+        >
           <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-3 sm:mb-4">
             About Me
           </h2>
           <div className="w-20 sm:w-24 h-1 bg-primary mx-auto rounded-full"></div>
-        </div>
+        </motion.div>
 
         {/* Main Content Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-20 items-center">
           {/* Left Column - Image */}
-          <div className="flex justify-center lg:justify-end order-1 lg:order-1">
+          <motion.div
+            initial={{ opacity: 0, x: -60, scale: 0.9 }}
+            animate={
+              isInView
+                ? { opacity: 1, x: 0, scale: 1 }
+                : { opacity: 0, x: -60, scale: 0.9 }
+            }
+            transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
+            className="flex justify-center lg:justify-end order-1 lg:order-1"
+          >
             <div className="relative group w-full max-w-xs sm:max-w-sm lg:max-w-md">
               {/* Outer Glowing Ring - Multi-layered glow effect */}
               <div className="absolute -inset-1 bg-linear-to-r from-primary via-accent to-primary rounded-2xl blur-2xl opacity-40 group-hover:opacity-70 animate-pulse transition duration-700"></div>
@@ -70,11 +92,21 @@ function AboutMe() {
                 <div className="absolute bottom-1/4 -right-4 w-3 h-3 bg-accent rounded-full animate-float-slow opacity-60 blur-sm"></div>
               </div>
             </div>
-          </div>
+          </motion.div>
 
           {/* Right Column - Content */}
-          <div className="space-y-5 sm:space-y-6 order-2 lg:order-2">
-            <div className="space-y-3 sm:space-y-4">
+          <motion.div
+            initial={{ opacity: 0, x: 60 }}
+            animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 60 }}
+            transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
+            className="space-y-5 sm:space-y-6 order-2 lg:order-2"
+          >
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+              transition={{ duration: 0.6, delay: 0.5, ease: "easeOut" }}
+              className="space-y-3 sm:space-y-4"
+            >
               <h3 className="text-xl sm:text-2xl md:text-3xl font-semibold text-foreground">
                 Hello! I'm <span className="text-primary">Lavindu Perera</span>
               </h3>
@@ -84,10 +116,15 @@ function AboutMe() {
                 background in IT, I specialize in building web apps, automation,
                 and Arduino projects.
               </p>
-            </div>
+            </motion.div>
 
             {/* Skills/Technologies */}
-            <div className="space-y-3 sm:space-y-4">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+              transition={{ duration: 0.6, delay: 0.6, ease: "easeOut" }}
+              className="space-y-3 sm:space-y-4"
+            >
               <h4 className="text-lg sm:text-xl font-semibold text-foreground">
                 Technologies I Work With
               </h4>
@@ -113,7 +150,7 @@ function AboutMe() {
                   </span>
                 ))}
               </div>
-            </div>
+            </motion.div>
 
             {/* Stats
             <div className="grid grid-cols-3 gap-4 py-6">
@@ -144,7 +181,12 @@ function AboutMe() {
             </div> */}
 
             {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-2 sm:pt-4">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+              transition={{ duration: 0.6, delay: 0.7, ease: "easeOut" }}
+              className="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-2 sm:pt-4"
+            >
               <Button
                 className="w-full sm:w-auto h-11 sm:h-10 text-base sm:text-sm"
                 size="lg"
@@ -202,8 +244,8 @@ function AboutMe() {
                 </svg>
                 Contact Me
               </Button>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
         </div>
       </div>
     </section>
