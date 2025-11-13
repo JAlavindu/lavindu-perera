@@ -1,5 +1,5 @@
 import React from "react";
-import myImage from "@/assets/images/my-image.png";
+import myImage from "@/assets/images/my-image3.png";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
 import ImageParticleBorder from "./ImageParticleBorder";
@@ -26,7 +26,7 @@ function AboutMe() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-20 items-center">
           {/* Left Column - Image */}
           <div className="flex justify-center lg:justify-end order-1 lg:order-1">
-            <div className="relative group w-full max-w-sm sm:max-w-md lg:max-w-lg">
+            <div className="relative group w-full max-w-xs sm:max-w-sm lg:max-w-md">
               {/* Outer Glowing Ring - Multi-layered glow effect */}
               <div className="absolute -inset-1 bg-linear-to-r from-primary via-accent to-primary rounded-2xl blur-2xl opacity-40 group-hover:opacity-70 animate-pulse transition duration-700"></div>
               <div className="absolute -inset-0.5 bg-linear-to-br from-primary/60 via-accent/60 to-primary/60 rounded-2xl blur-xl opacity-50 group-hover:opacity-80 transition duration-700"></div>
